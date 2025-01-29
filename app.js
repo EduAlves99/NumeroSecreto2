@@ -6,8 +6,7 @@ let tentativas = 1;
 function exibirTextoNaTela(tag, texto) {
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
-    responsiveVoice.speak (texto, 'Brazilian Portuguese Female', {rate: 1.2});
-
+    responsiveVoice.speak(texto, 'Brazilian Portuguese Female', {rate: 1.1});
 }
 
 function exibirMensagemInicial() { 
@@ -24,14 +23,14 @@ function verificarChute() {
     if (chute == numeroSecreto) {
         exibirTextoNaTela('h1', 'FINALMENTE ACERTOU!');
         let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
-        let mensagensTentativas = `Mesmo vc com esse QI de uma porta descobriu o número em ${tentativas} ${palavraTentativa}, Parabéns... eu acho`;
+        let mensagensTentativas = `Mesmo você com esse QI de uma porta descobriu o número em ${tentativas} ${palavraTentativa}, Parabéns... eu acho`;
         exibirTextoNaTela('p', mensagensTentativas); 
         document.getElementById('reiniciar').removeAttribute('disabled');
     } else {
         if (chute > numeroSecreto) {
-            exibirTextoNaTela('p', 'Claro que ia errar, mas uma dica pra você: o número é menor que esse aí.');
+            exibirTextoNaTela('p', 'Tão burrinho, uma dica pra você: o número é menor que esse aí.');
         } else {
-            exibirTextoNaTela('p', 'Claro que ia errar, mas uma dica pra você: o número é maior que esse aí.');
+            exibirTextoNaTela('p', 'Já que precisa de ajuda: o número é maior que esse aí.');
         }
         tentativas++;
         limparCampo();
@@ -67,4 +66,5 @@ function reiniciarjogo() {
     exibirMensagemInicial(); 
     document.getElementById('reiniciar').setAttribute('disabled', true);
 }
+
 document.getElementById('reiniciar').addEventListener('click', reiniciarjogo);
